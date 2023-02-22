@@ -1,0 +1,29 @@
+{
+  "name": "psychic-hammerlily-social",
+  "version": "1.0.0",
+  "description": "making social media through the power of mongoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loudwhisperer/psychic-hammerlily-social.git"
+  },
+  "keywords": [
+    "express",
+    "mongoose",
+    "mongo"
+  ],
+  "author": "Brendan Borowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/loudwhisperer/psychic-hammerlily-social/issues"
+  },
+  "homepage": "https://github.com/loudwhisperer/psychic-hammerlily-social#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.9.2",
+    "nodemon": "^2.0.20"
+  }
+}
