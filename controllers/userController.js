@@ -28,30 +28,60 @@ const userController = {
     }
   },
   async updateUser(req, res) {
-    try{
-    const userData = await User.findOneAndUpdate(
-      { _id: req.params.courseId },
-      { $set: req.body },
-      { runValidators: true, new: true }
-    );
-    !userData
-      ? res.status(404).json({ message: "No User with that ID" })
-      : res.json(userData);
-  } catch(err){
-    res.status(500).json(err);
-  }
-},
-async deleteUser(req,res) {
-    try{
-        const userData = await User.findOneAndDelete({ _id: req.params.userId });
-        const id = userData._id
-        await Thought.deleteMany({username: id})
-        await User.updateMany({friends: id}, {$pull: {friends: id}})
-        !userData
-          ? res.status(404).json({ message: "No User with that ID" })
-          : res.json('User and associated thoughts and friend associations deleted')
-    } catch(err){
-        res.status(500).json(err);
+    try {
+      const userData = await User.findOneAndUpdate(
+        { _id: req.params.courseId },
+        { $set: req.body },
+        { runValidators: true, new: true }
+      );
+      !userData
+        ? res.status(404).json({ message: "No User with that ID" })
+        : res.json(userData);
+    } catch (err) {
+      res.status(500).json(err);
     }
-}
-}
+  },
+  async deleteUser(req, res) {
+    try {
+      const userData = await User.findOneAndDelete({ _id: req.params.userId });
+      const id = userData._id;
+      await Thought.deleteMany({ username: id });
+      await User.updateMany({ friends: id }, { $pull: { friends: id } });
+      !userData
+        ? res.status(404).json({ message: "No User with that ID" })
+        : res.json(
+            "User and associated thoughts and friend associations deleted"
+          );
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+  async newFriend(req, res) {
+    try {
+      const friendData = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $push: { friends: req.params.friendId } },
+        { runValidators: true, new: true }
+      );
+      !friendData
+        ? res.status(404).json({ message: "Unable to add friend with this id" })
+        : res.json(friendData);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+  async deleteFriend(req, res) {
+    try {
+      const friendData = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $pull: { friends: req.params.friendId } },
+        { runValidators: true, new: true }
+      );
+      !friendData
+        ? res.status(404).json({ message: "Unable to add friend with this id" })
+        : res.json(friendData);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+};
