@@ -1,6 +1,7 @@
 const { User, Thought } = require("../models");
 
 const userController = {
+  //get all users
   async getUsers(req, res) {
     try {
       const userData = await User.find();
@@ -9,6 +10,7 @@ const userController = {
       res.status(500).json(err);
     }
   },
+  // get a single user 
   async getSingleUser(req, res) {
     try {
       const userData = await User.findOne({ _id: req.params.userId });
@@ -85,3 +87,5 @@ const userController = {
     }
   },
 };
+
+module.exports = userController;

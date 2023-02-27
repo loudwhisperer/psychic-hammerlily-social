@@ -4,6 +4,7 @@
   "description": "making social media through the power of mongoDB",
   "main": "index.js",
   "scripts": {
+    "start": "node index",
     "test": "npm test"
   },
   "repository": {
