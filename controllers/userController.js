@@ -32,7 +32,7 @@ const userController = {
   async updateUser(req, res) {
     try {
       const userData = await User.findOneAndUpdate(
-        { _id: req.params.courseId },
+        { _id: req.params.userId },
         { $set: req.body },
         { runValidators: true, new: true }
       );
@@ -64,7 +64,7 @@ const userController = {
         { _id: req.params.userId },
         { $push: { friends: req.params.friendId } },
         { runValidators: true, new: true }
-      );
+      )
       !friendData
         ? res.status(404).json({ message: "Unable to add friend with this id" })
         : res.json(friendData);

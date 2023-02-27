@@ -1,4 +1,4 @@
-const router = require("express").Router;
+const router = require("express").Router();
 const {
   getUsers,
   createUser,
@@ -13,6 +13,6 @@ router.route("/").get(getUsers).post(createUser);
 
 router.route("/:userId").get(getSingleUser).put(updateUser).delete(deleteUser);
 
-router.route("/:userId/friends/:friendId").put(newFriend).put(deleteFriend);
+router.route("/:userId/friends/:friendId").put(newFriend).delete(deleteFriend);
 
 module.exports = router;
