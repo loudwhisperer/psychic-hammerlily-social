@@ -21,6 +21,7 @@ const userController = {
       res.status(500).json(err);
     }
   },
+  //create a user
   async createUser(req, res) {
     try {
       const newUser = await User.create(req.body);
@@ -29,6 +30,7 @@ const userController = {
       res.status(500).json(err);
     }
   },
+  //update a user
   async updateUser(req, res) {
     try {
       const userData = await User.findOneAndUpdate(
@@ -43,6 +45,7 @@ const userController = {
       res.status(500).json(err);
     }
   },
+  //delete a user
   async deleteUser(req, res) {
     try {
       const userData = await User.findOneAndDelete({ _id: req.params.userId });
@@ -58,6 +61,7 @@ const userController = {
       res.status(500).json(err);
     }
   },
+  //add a friend to a user
   async newFriend(req, res) {
     try {
       const friendData = await User.findOneAndUpdate(
@@ -72,6 +76,7 @@ const userController = {
       res.status(500).json(err);
     }
   },
+  //delete a friend from a user
   async deleteFriend(req, res) {
     try {
       const friendData = await User.findOneAndUpdate(
