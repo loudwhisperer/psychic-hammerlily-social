@@ -44,7 +44,7 @@ const thoughtController = {
         { runValidators: true, new: true }
       );
       const addToUser = await User.findOneAndUpdate(
-        { _id: thoughtData.username },
+        { _id: thoughtData.username},
         { $push: { thoughts: thoughtData._id } },
         { runValidators: true, new: true }
       );
@@ -67,6 +67,7 @@ const thoughtController = {
         { $pull: { thoughts: thoughtData._id } },
         { runValidators: true, new: true }
       );
+      res.json("Thought and associated reactions deleted");
     } catch (err) {
       res.status(500).json(err);
     }
@@ -74,7 +75,7 @@ const thoughtController = {
   async newReaction({ body, params }, res) {
     try {
       const reactionData = await Thought.findOneAndUpdate(
-        { _id: req.params.thoughtId },
+        { _id: params.thoughtId },
         { $push: { reactions: body } },
         { runValidators: true, new: true }
       );
@@ -84,13 +85,13 @@ const thoughtController = {
             .json({ message: "Unable to add reaction to thought with this id" })
         : res.json(reactionData);
     } catch (err) {
-      res.status(500).json(err);
+      res.status(500).json(err.message);
     }
   },
   async deleteReaction({ params }, res) {
     const reactionData = await Thought.findOneAndUpdate(
       { _id: params.thoughtId },
-      { $pull: { reactions: params.reactionId } },
+      { $pull: { reactions: {reactionId: params.reactionId} } },
       { runValidators: true, new: true }
     );
     !reactionData

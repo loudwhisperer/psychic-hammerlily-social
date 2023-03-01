@@ -27,7 +27,7 @@ const userController = {
       const newUser = await User.create(req.body);
       res.json(newUser);
     } catch (err) {
-      res.status(500).json(err);
+      res.status(500).json(err.message);
     }
   },
   //update a user
