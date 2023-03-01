@@ -85,7 +85,7 @@ const thoughtController = {
             .json({ message: "Unable to add reaction to thought with this id" })
         : res.json(reactionData);
     } catch (err) {
-      res.status(500).json(err.message);
+      res.status(500).json(err);
     }
   },
   async deleteReaction({ params }, res) {

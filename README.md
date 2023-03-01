@@ -13,8 +13,9 @@ This ones biggest challenge for me was a small thing that made me laugh at mysel
 
 ## Usage
 
+- A user simply needs to run the application using the start command node index then they will be able to run all user and thought routes in the API tool of their choosing as shown in the video walkthrough below:
 
-[![Watch the video](./assets/e-commerce.png)](https://drive.google.com/file/d/13gNRafHEmTrjwq6FgOzfVJggrmJmMwcY/view)
+[![Watch the video](./assets/routes.png)](https://drive.google.com/file/d/1SKgVDfsPbdxpRflG8MX4q761JGKsmc4F/view)
 
 ## License
 
